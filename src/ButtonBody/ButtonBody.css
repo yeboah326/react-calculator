@@ -1,0 +1,15 @@
+.button-body{
+    background-color: rgb(40, 40, 40);
+    height: 70%;
+    padding: 1rem;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-gap: 0.5rem;
+    grid-template-areas: 
+    "seven eight nine del del"
+    "four five six multiply divide"
+    "one two three plus minus"
+    "zeros zeros dot equal equal";
+}
