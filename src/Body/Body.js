@@ -7,12 +7,18 @@ import { Button } from "../Button/Button";
 export class Body extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { solved: "", toBeSolved: "32" };
+    this.state = { solved: "", toBeSolved: "" };
     this.modifyToBeSolved = this.modifyToBeSolved.bind(this);
     this.delToBeSolved = this.delToBeSolved.bind(this);
-
+    this.equalToPressed = this.equalToPressed.bind(this)
   }
 
+  equalToPressed() {
+    this.setState({
+      solved : eval(this.state.toBeSolved),
+      toBeSolved: ""
+    })
+  }
   modifyToBeSolved (e){
     this.setState({
       toBeSolved: this.state.toBeSolved + e.target.value,
@@ -42,15 +48,15 @@ export class Body extends React.Component {
           <Button value={2} position={"two"} onClick={e => this.modifyToBeSolved(e)}/>
           <Button value={3} position={"three"} onClick={e => this.modifyToBeSolved(e)}/>
           <Button value={0} position={"zeros"} onClick={e => this.modifyToBeSolved(e)}/>
-          <Button value={"."} position={"dot"} />
+          <Button value={"."} position={"dot"} onClick={e => this.modifyToBeSolved(e)}/>
 
           {/* Operations */}
           <Button value={"DEL"} position={"del"} onClick={this.delToBeSolved} />
-          <Button value={"x"} position={"multiply"} />
-          <Button value={"/"} position={"divide"} />
-          <Button value={"+"} position={"plus"} />
-          <Button value={"-"} position={"minus"} />
-          <Button value={"="} position={"equal"} />
+          <Button value={"*"} position={"multiply"} onClick={e => this.modifyToBeSolved(e)}/>
+          <Button value={"/"} position={"divide"} onClick={e => this.modifyToBeSolved(e)}/>
+          <Button value={"+"} position={"plus"} onClick={e => this.modifyToBeSolved(e)}/>
+          <Button value={"-"} position={"minus"} onClick={e => this.modifyToBeSolved(e)}/>
+          <Button value={"="} position={"equal"} onClick={this.equalToPressed} />
         </ButtonBody>
       </div>
     );
